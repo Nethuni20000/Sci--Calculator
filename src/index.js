@@ -2,11 +2,17 @@ document.addEventListener("DOMContentLoaded", function ()  {
     const display= document.getElementById('calc-display');
     const buttons= document.getElementsByClassName('btn');
 
+
+    // Initializing the currentValue variable as an
+    //empty string
     let currentValue = "";
 
     function evaluateResult() {
         console.log('currentValue:', currentValue)
         const convertedValue = currentValue
+
+        //Replace some Mathematical symbolswith their javascript
+        // equivalant const convertedValue =  currentValue
          .replace("x",  "*")
          .replace("÷",  "/")
          .replace('%', '*0.01')
@@ -20,11 +26,22 @@ document.addEventListener("DOMContentLoaded", function ()  {
          .replace('√', 'Math.sqrt');
         
         console.log('convertedValue:', convertedValue)
+
+        //Evaluate the mathematical expressions
         const result = eval(convertedValue);
-         currentValue = result.toString();     
+
+        //convert the results to string and
+        //store ot in currentValue
+         currentValue = result.toString(); 
+         
+         //update the value of the display 
+         //with the result
          display.value = currentValue;                       
     }
     
+
+    //loop through out all the buttons and 
+    //attach a click event listener
     for (let i = 0; i < buttons.length; i++) {
         const button = buttons[i];
 
